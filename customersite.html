@@ -1,0 +1,85 @@
+     
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Customer order form</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style3.css">
+  </head>
+  <body>
+    <nav>
+        <ul class="u1">
+            <li class="l1"><a href="index.html">Home</a></li>
+            <li class="l1"><a href="customersite.html">Customer Site</a></li>
+            <li class="l1"><a href="freelancers.html">Free Lancers</a></li>
+            <li class="l1"><a href="About.html">About Us</a></li>
+            <li class="l1"><a href="Contact.html">Contact details</a></li>
+            <li class="l1"><a href="Contactus.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="main-block">
+      <h1>Customer needs form</h1>
+      <form action="/" name="Customer order form">
+        <div class="info">
+          <input class="NIC" type="text" name="NIC" id="id" placeholder="Enter your NIC number">
+          <input class="fname" type="text" name="fname" id="fname" placeholder="Full name">
+          <input type="text" name="email" id="email" placeholder="Email">
+          <input type="text" name="phone" id="phone" placeholder="Phone number">
+          <input type="text" name="designtype" id="designtype" placeholder="What was the idea for webdesign">
+          <input type="text" name="contact" id="contact" placeholder="Which way to contact">
+          <input type="text" name="edate" placeholder="edate">
+          
+        </div>
+        <button href="/" class="button">Submit</button>
+      </form>
+    </div>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+            import { getDatabase,set,ref } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+    
+            const firebaseConfig = {
+                
+                apiKey: "AIzaSyAdiInGADcy39z0ac9E5eqtRvaU70d6uRI",
+                authDomain: "project-1-46444.firebaseapp.com",
+                databaseURL: "https://project-1-46444-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "project-1-46444",
+                storageBucket: "project-1-46444.appspot.com",
+                messagingSenderId: "5315418885",
+                appId: "1:5315418885:web:23c54559208df6f60cb56c"
+            };
+          
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
+            
+            document.getElementById("Customer order form").addEventListener("submit", function(e){
+                e.preventDefault();
+                let id  = document.getElementById("NIC").value;
+                let fname = document.getElementById("fname").value;
+                let email = document.getElementById("email").value; 
+                let phone = document.getElementById("phone").value; 
+                let designtype = document.getElementById("designtype").value;
+                let contact = document.getElementById("Contact").value;
+                let edate = document.getElementById("edate").value; 
+                
+            set(ref(db, 'users/' + userId), {
+                fullname: fname,
+                address: address,
+                email: email,
+                phoneNo: phoneNo,
+                designtype:designtype,
+                contact:contact,
+                edate:edate,
+            
+      });
+      
+    });
+    
+    
+    
+          </script>
+           
+        
+    </body>
+</html>

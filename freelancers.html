@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New Member Registration</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <nav>
+        <ul class="u1">
+            <li class="l1"><a href="index.html">Home</a></li>
+            <li class="l1"><a href="customersite.html">Customer Site</a></li>
+            <li class="l1"><a href="freelancers.html">Free Lancers</a></li>
+            <li class="l1"><a href="About.html">About Us</a></li>
+            <li class="l1"><a href="Contact.html">Contact details</a></li>
+            <li class="l1"><a href="Contactus.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="testbox" name="freelancersregistrationform">
+      <form action="/">
+        <div class="banner">
+          <h1>New Free Lancer Registration</h1>
+        </div>
+        <div class="item">
+          <label for="NIC"> ID<span>*</span></label>
+          <input id="NIC" type="number" name="NIC" required/>
+        </div>
+        <div class="colums">
+          <div class="item">
+            <label for="fname"> First Name<span>*</span></label>
+            <input id="fname" type="text" name="fname" required/>
+          </div>
+          <div class="item">
+            <label for="lname"> Last Name<span>*</span></label>
+            <input id="lname" type="text" name="lname" required/>
+          </div>
+          <div class="item">
+            <label for="address1">Address 1<span>*</span></label>
+            <input id="address1" type="text"   name="address1" required/>
+          </div>
+          <div class="item">
+            <label for="address2">Address 2<span>*</span></label>
+            <input id="address2" type="text"   name="address2" required/>
+          </div>
+          <div class="item">
+            <label for="city">City<span>*</span></label>
+            <input id="city" type="text"   name="city" required/>
+          </div>
+          <div class="item">
+            <label for="eaddress">Email Address<span>*</span></label>
+            <input id="eaddress" type="text"   name="eaddress" required/>
+          </div>
+          <div class="item">
+            <label for="phone">Phone<span>*</span></label>
+            <input id="phone" type="tel"   name="phone" required/>
+          </div>
+        </div>
+        <h2>Terms and Conditions</h2>
+        <input type="checkbox" name="checkbox1">
+        <label>You consent to receive communications from us electronically. We will communicate with you by e-mail or phone. You agree that all agreements, notices, disclosures and other communications that we provide to you electronically satisfy any legal requirement that such communications be in writing.</label>
+        <div class="btn-block">
+          <button type="submit" href="/">Submit</button>
+        </div>
+      </form>
+    </div>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+      import { getDatabase,set,ref } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+
+      const firebaseConfig = {
+          
+          apiKey: "AIzaSyAdiInGADcy39z0ac9E5eqtRvaU70d6uRI",
+          authDomain: "project-1-46444.firebaseapp.com",
+          databaseURL: "https://project-1-46444-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "project-1-46444",
+          storageBucket: "project-1-46444.appspot.com",
+          messagingSenderId: "5315418885",
+          appId: "1:5315418885:web:23c54559208df6f60cb56c"
+      };
+    
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+      
+      document.getElementById("freelancersregistrationform").addEventListener("submit", function(e){
+          e.preventDefault();
+          let id = document.getElementById("NIC").value;
+          let fname = document.getElementById("fname").value;
+          let lname = document.getElementById("lname").value;
+          let address1 = document.getElementById("address1").value;
+          let address2 = document.getElementById("address2").value;
+          let city = document.getElementById("city").value;
+          let eaddress = document.getElementById("eaddress").value; 
+          let phone = document.getElementById("phone").value;  
+          
+      set(ref(db, 'users/' + userId), {
+          firstname: fname,
+          lastname: lname,
+          address1: address1,
+          address2: address2,
+          city: city,
+          eaddress: eaddress,
+          phone: phone,
+      
+});
+
+});
+
+
+
+    </script>
+  </body>
+</html>
